@@ -22,6 +22,9 @@
   ## Usage
   Click inside the text box to enter text and click the save button to save the text to local storage to be reviewed later.
 
+  Screenshot of Application:
+  ![Screenshot of Application](./assets/images/screenshot.png)
+
   ## License 
   
   [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/https://opensource.org/licenses/MIT)
