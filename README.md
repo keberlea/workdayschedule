@@ -5,7 +5,7 @@
   
 
   ## Description
-  This is a work day schedular which changes the background of each text field to either gray (past), white (current) or green (future). Enter your desired text into the time block's text feild in order to save your notes or tasks for the day to local storage.
+  This is a work day schedular which changes the background of each text field to either gray (past), red (current) or green (future). Enter your desired text into the time block's text feild in order to save your notes or tasks for the day to local storage.
 
   ## Table of Contents
    - [Description](#Description)
