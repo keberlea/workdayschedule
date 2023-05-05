@@ -87,9 +87,6 @@ function setbgcolors() {
     $(this).removeClass('present future');
     $(this).addClass('past');
   } 
-  //else {
-  //  console.log("Time Calculation Error");
-  //}
     })
 };
 
