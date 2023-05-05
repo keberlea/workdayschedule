@@ -78,7 +78,7 @@ function setbgcolors() {
     $(this).addClass('future');
   } 
   // if currentTime is equal to calTimeBlock, remove class past or future and add class present
-  else if (currentTime === timeblock) {
+  else if (currentTime == timeblock) {
     $(this).removeClass('past future');
     $(this).addClass('present');
   } 
