@@ -1,25 +1,23 @@
 
 //sets time and date at top of page
-let today = dayjs().format('dddd MMM, D, YYYY HH:mm');
+let today = dayjs().format('dddd MMM, D, YYYY');
 let time = dayjs().format('HH:mm')
 $('#currentDay').text(today);
+$('#currentTime').text(time);
 console.log(today);
 console.log(time);
 
-//entry box time and text
-let eventTime;
-let eventTxt;
+
 
 //save button
-let saveBtn = $('#savebtn');
+let saveBtn = $('.saveBtn');
 
-let hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-//bgcolor change variables
-let calTimeBlock;
+//bgcolor change variable
+
+let calTimeBlock = $('#calTime');
 let timeblock;
-let TimeBlockID = $("textarea[id*='timeblock']");
-
+let TimeBlockID = $('[id^=timeblock-]');
 
 function init(){
     renderEvents();
@@ -27,46 +25,73 @@ function init(){
 };
 
 
+let hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
 function renderEvents() {
-  for (i = 0, i < hours.length; i++;) {
+  for (let i = 0; i < hours.length; i++) {
     $('[id^=timeblock-]').each(function(i, v){
-      $(v).val(localStorage.getItem(hour[i]));
+      $(v).val(localStorage.getItem(hours[i]));
     })
   }
-  console.log(hours);
 };
 
 console.log(hours);
 
-saveBtn.on('click',saveButtonclick());
+saveBtn.on('click', saveButtonClick);
 
-function saveButtonClickHandler(event) {
+//entry box time and text
+let eventTime;
+let eventTxt;
+
+
+function saveButtonClick() {
   // Keeps Form from Sending
   event.preventDefault();
   eventTime = $(this).attr('id').split('-')[1];
   eventTxt = $(this).siblings('textarea[name^="timeblock"]').val().trim();
   // Calls Function to Store in Local Storage
   storeEvents();
+  console.log(eventTime);
+  console.log(eventTxt);
 };
-  function setBGColors() {
-    // For each timeblock ID
-    timeblockID.each(function () {
-    // Split it to display the time contained at the end of the ID, 
-    calTimeBlock = $(this).attr('id').split('-')[1];
-    calTimeBlock = parseInt(dayjs(timeBlock, 'H').format('H'));
-    currenttime = parseInt(dayjs().format('H'));
-    
-    if (currentTime < calTimeBlock) {
-        $(this).removeClass('past present');
-        $(this).addClass('future');
-    } else if (currentTime === calTimeBlock) {
-        $(this).removeClass('past future');
-        $(this).addClass('present');
-    } else if (currentTime > calTimeBlock) {
-        $(this).removeClass('present future');
-        $(this).addClass('past');
-    } else {
-        console.log("Time Calculation Error");
-    }
+
+//stores events in local storage
+
+function storeEvents() {
+  localStorage.setItem(eventTime, eventTxt);
+};
+
+
+//sets bg colors according to current time.
+function setbgcolors() {
+  // For each timeblock ID
+  TimeBlockID.each(function () {
+  // Split it to display the time contained at the end of the ID, 
+  timeblock = $(this).attr('id').split('-')[1];
+  //timeBlock = parseInt(dayjs(timeBlock, 'H').format('H'));
+  currentTime = parseInt(dayjs().format('H'));
+   
+  
+  // if  current time is less then the calTimeBlock, remove class past or present and add class future
+  if (currentTime < timeblock) {
+    $(this).removeClass('past present');
+    $(this).addClass('future');
+  } 
+  // if currentTime is equal to calTimeBlock, remove class past or future and add class present
+  else if (currentTime === timeblock) {
+    $(this).removeClass('past future');
+    $(this).addClass('present');
+  } 
+  // if currentTime is greater than calTimeBlock, remove class present or future and ass class past
+  else if (currentTime > timeblock) {
+    $(this).removeClass('present future');
+    $(this).addClass('past');
+  } 
+  //else {
+  //  console.log("Time Calculation Error");
+  //}
     })
-  };
+};
+
+
+init();
