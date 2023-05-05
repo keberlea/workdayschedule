@@ -23,7 +23,7 @@
   Click inside the text box to enter text and click the save button to save the text to local storage to be reviewed later.
 
   Screenshot of Application:
-  ![Screenshot of Application](./assets/images/screenshot.png)
+  ![Alt text](screenshot.PNG)
 
   ## License 
   
